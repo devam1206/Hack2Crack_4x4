@@ -31,3 +31,6 @@ market/market_venv
 market/market_data
 GIS/gis_data
 GIS/GIS_venv
+Crop_Disease/uploads
+Crop_Disease/result_image.jpg
+Crop_Disease/result.txt

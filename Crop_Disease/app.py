@@ -1,5 +1,6 @@
 from flask import Flask, request, send_file, render_template, jsonify
 from flask_cors import CORS
+from werkzeug.utils import secure_filename
 import cv2
 import os
 from ultralytics import YOLO
@@ -7,11 +8,15 @@ from ultralytics import YOLO
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "https://ag-six.vercel.app/"]}})  # Enable CORS for specific origin
 
-# Hardcoded paths and parameters
-model_path = r'C:\Projects\H2C_4x4\Crop_Disease\best.pt'  # Replace with the actual path to your model
+# Paths and parameters (relative to this file)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_DIR = os.path.join(BASE_DIR, 'uploads')
+os.makedirs(UPLOAD_DIR, exist_ok=True)
+
+model_path = os.path.join(BASE_DIR, 'best.pt')  # Ensure best.pt exists in Crop_Disease/
 conf_threshold = 0.25
-result_image_path = r'C:\Projects\H2C_4x4\Crop_Disease\result_image.jpg'
-labels_output_path = r'C:\Projects\H2C_4x4\Crop_Disease\result.txt'  # Path to save the result image
+result_image_path = os.path.join(BASE_DIR, 'result_image.jpg')
+labels_output_path = os.path.join(BASE_DIR, 'result.txt')  # Stores detected labels
 
 # Function to perform detection and display the result
 def detect_and_display(image_path, model_path, conf_threshold, result_image_path):
@@ -58,7 +63,8 @@ def get_diseases():
         return "No image file found in the request", 400
     
     image_file = request.files['image']
-    image_path = os.path.join(r'C:\Projects\H2C_4x4\Crop_Disease', image_file.filename)
+    filename = secure_filename(image_file.filename)
+    image_path = os.path.join(UPLOAD_DIR, filename)
     image_file.save(image_path)
     
     detect_and_display(image_path, model_path, conf_threshold, result_image_path)
