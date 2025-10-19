@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+</head>
+<body>
+    <h1>Upload an Image</h1>
+    <form id="upload-form" action="/getdiseases" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+    <h2>Result Image</h2>
+    <img id="result-image" src="" alt="Result will be displayed here" style="display:none;">
+    <h2>Detected Disease</h2>
+    <p id="disease-name"></p>
+    <script>
+        const form = document.getElementById('upload-form');
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch('/getdiseases', {
+                method: 'POST',
+                body: formData
+            });
+            if (response.ok) {
+                const data = await response.json();
+                const resultImage = document.getElementById('result-image');
+                resultImage.src = "/result_image?" + new Date().getTime();  
+                resultImage.style.display = 'block';
+                
+                const diseaseName = document.getElementById('disease-name');
+                console.log(data.disease_name);
+                diseaseName.textContent = data.disease_name;
+            } else {
+                alert('Failed to upload image');
+            }
+        });
+    </script>
+</body>
+</html>

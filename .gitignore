@@ -25,10 +25,9 @@ dist-ssr
 *.sw?
 .vercel
 
-Crop_Disease/ew
+Crop_Disease/Disease_venv
 Crop_Recommendation/rec_venv
 market/market_venv
 market/market_data
-Crop_Disease
 GIS/gis_data
 GIS/GIS_venv
