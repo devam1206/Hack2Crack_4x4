@@ -1,0 +1,38 @@
+@import "tailwindcss";
+/* Ensure the container for the cards can scroll horizontally */
+.cards-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    gap: 16px; /* Adjust the gap between cards as needed */
+    padding-bottom: 16px; /* Add some padding to avoid cutting off the scrollbar */
+  }
+  
+  /* Ensure each card takes up the full width of the container on mobile */
+  .card {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: 100%; /* Each card takes the full width of the container */
+    max-width: 300px; /* Adjust the max-width as needed */
+  }
+  
+  /* Hide the scrollbar for a cleaner look */
+  .cards-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .cards-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .rounded-image {
+    border-radius: 12px; /* Adjust the radius as needed */
+  }
+
+  .disabled-nav {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: gray;
+  }

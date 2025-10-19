@@ -1,0 +1,33 @@
+/* Global Styles for Croppred.jsx */
+
+  
+  .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #80e619; /* Match your theme's green color */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .swiper-container {
+    height: 300px;
+  }
+  
+  /* Light mode styles (default) */
+body {
+    background-color: #cff2f2; /* Updated base background color */
+    color: black;
+  }
+  
+  /* Dark mode styles */
+  html.dark body {
+    background-color: #585268; /* Updated base background color */
+    color: white;
+  }
