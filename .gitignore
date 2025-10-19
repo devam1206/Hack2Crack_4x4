@@ -26,11 +26,9 @@ dist-ssr
 .vercel
 
 Crop_Disease/ew
-Crop_Recommendation/my_env
-GIS/gis
+Crop_Recommendation/rec_venv
 market/market_venv
 market/market_data
 Crop_Disease
-Crop_Recommendation
 GIS/gis_data
 GIS/GIS_venv
