@@ -1,0 +1,10 @@
+Flask>=2.0
+flask-cors>=3.0
+pandas>=1.4
+numpy>=1.22
+matplotlib>=3.5
+seaborn>=0.11
+statsmodels>=0.13
+python-dateutil>=2.8
+pytz>=2022.1
+scipy>=1.8
