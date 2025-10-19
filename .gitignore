@@ -32,4 +32,5 @@ market/market_venv
 market/market_data
 Crop_Disease
 Crop_Recommendation
-GIS
+GIS/gis_data
+GIS/GIS_venv
